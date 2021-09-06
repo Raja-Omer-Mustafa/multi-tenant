@@ -20,12 +20,28 @@
                             <span>Dashboard</span>
                         </a>                        
                     </li>
+                    @hasrole('admin')
                     <li>
-                        <a class="nav-link" href="/users">
-                            <i class="fas fa-home" aria-hidden="true"></i>
-                            <span>Users</span>
+                        <a class="nav-link" href="{{route('admin.users')}}">
+                            <i class="fas fa-table" aria-hidden="true"></i>
+                            <span>AdminsUsers</span>
                         </a>                        
                     </li>
+                    @endhasrole
+                    @hasrole('superadmin')
+                    <li>
+                        <a class="nav-link" href="{{route('supeadmin.users')}}">
+                            <i class="fas fa-table" aria-hidden="true"></i>
+                            <span>SuperAdminUsers</span>
+                        </a>                        
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{route('users.index')}}">
+                            <i class="fas fa-align-left" aria-hidden="true"></i>
+                            <span>All Users</span>
+                        </a>                        
+                    </li>
+                    @endhasrole
                 </ul>
             </nav>
 

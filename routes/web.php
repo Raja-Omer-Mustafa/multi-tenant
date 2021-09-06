@@ -25,8 +25,14 @@ Route::get('/', function () {
 Route::get('/index', [BackendController::class, 'index']);
 Auth::routes();
 
+
+Route::middleware(['PermissionCheck','auth'])->group(function(){
 Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
 Route::resource('permissions', PermissionController::class);
-Route::get('/superadmin/users', [UserController::class, 'shownAdmins']);
+Route::get('/superadmin/users', [UserController::class, 'shownAdmins'])->name('supeadmin.users');
 Route::get('/superadmin/ajax/users', [UserController::class, 'shownAjaxAdmins'])->name('adminsajax.show');
+Route::get('/admin/users', [UserController::class, 'shownUsers'])->name('admin.users');
+Route::get('/admin/ajax/users', [UserController::class, 'shownAjaxUsers'])->name('userdAjax.show');
+ });
+Route::get('/verifyemail/{token}',[Auth\RegisterController::class, 'verify']);

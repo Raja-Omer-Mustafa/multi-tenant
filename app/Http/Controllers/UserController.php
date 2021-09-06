@@ -53,7 +53,7 @@ class UserController extends Controller {
         $this->validate($request, [
             'name'=>'required|max:120',
             'email'=>'required|email|unique:users',
-            'password'=>'required|min:6|confirmed'
+            'password'=>'required|min:8|confirmed'
         ]);
 
         $user = User::create($request->only('email', 'name', 'password')); //Retrieving only the email and password data
@@ -160,5 +160,21 @@ class UserController extends Controller {
             return DataTables::of($admin_users)->make(true);
         }
         return view('superadmin.users');
+    }
+    
+public function shownUsers()
+    {
+        
+        return view('admin.user');
+    }
+
+    public function shownAjaxUsers(Request $request)
+    {
+        if ($request->ajax()) {
+            $admin_users = User::role('user')->get();
+            // $response=json_encode($admin_users);
+            return DataTables::of($admin_users)->make(true);
+        }
+        return view('admin.user');
     }
 }

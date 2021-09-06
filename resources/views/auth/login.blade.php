@@ -104,11 +104,13 @@
                                 </button>
                                 </div>
                             </div>
+                            <p class="text-center">Don't have an account yet? <a href="{{route('register')}}">Sign Up!</a></p>
+
                         </form>
                     </div>
                 </div>
 
-                <p class="text-center text-muted mt-3 mb-3">&copy; Copyright 2017. All Rights Reserved.</p>
+              
             </div>
         </section>
         <!-- end: page -->

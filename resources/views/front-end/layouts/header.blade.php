@@ -1,4 +1,4 @@
-<!-- start: header -->
+start: header -->
 <header class="header">
     <div class="logo-container">
         <a href="../3.0.0" class="logo">
@@ -19,6 +19,10 @@
                     <img src="{{asset('img/!logged-user.jpg')}}" alt="Joseph Doe" class="rounded-circle" data-lock-picture="img/!logged-user.jpg" />
                 </figure>
                 <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
+                        @if(Auth::user())
+                    <span class="name">{{ Auth::user()->name }}</span>
+                    <span class="role">{{ Auth::user()->email }}</span>
+                    @endif
                     
                 </div>
 
@@ -57,4 +61,4 @@
     </div>
     <!-- end: search & user box -->
 </header>
-<!-- end: header -->
+<!-- end: header
